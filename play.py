@@ -285,7 +285,7 @@ playerSImg = pygame.image.load("../../assets/img/player" + playerChoice + "S.png
 if not(levelChoosen == "*"):    #If the user want to play a specific level and not all of them, the number of levels is 1
     nLevels = 1
 
-t1 = time.clock()#Start a clock (useful for speeruners who want to know their time)
+t1 = time.time()#Start a clock (useful for speeruners who want to know their time)
 #Execute all this for every level
 for levelIndex in range(1,nLevels + 1):
     #Stop playing levels if the player don't have any lives
@@ -322,7 +322,7 @@ for levelIndex in range(1,nLevels + 1):
             if (event.key == pygame.K_RETURN) or (event.key == pygame.K_KP_ENTER):
                 break
 
-    t0 = time.clock()
+    t0 = time.time()
     dt = 0
     pushLeft = False
     pushRight = False
@@ -345,7 +345,7 @@ for levelIndex in range(1,nLevels + 1):
         else:   #If there is still some coins to get...
             if not died:    #If the player is still alive
                 acc = -9.5  #Put some gravity (more than on earth to make the player fall faster)
-                t = time.clock() * 20   #find the actual time (*20 is to makes it looks better)
+                t = time.time() * 30   #find the actual time (*20 is to makes it looks better)
                 dt = t - t0 #Get the time step = last time - this time
                 t0 = t      #Put the acutal time as the future last time
                 if loading > 5: #Avoid letting the player move when the game was just loaded
@@ -370,7 +370,7 @@ for levelIndex in range(1,nLevels + 1):
                 clashed = True
                 while clashed:
                     clashed = checkClash()
-                tElapsed = round(time.clock() - t1,2)   #Get the elapsed time since the user began playing
+                tElapsed = round(time.time() - t1,2)   #Get the elapsed time since the user began playing
                 #Print indications on the top of the screen
                 for i in range(hearthLevel):    #Print all lives
                     screen.blit(hearthImg, (150 + i * 40, 15))
