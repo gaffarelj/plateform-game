@@ -162,7 +162,7 @@ def die():
         died = True #Change the dead indicator boolean to True
         #Re-open the correct level
         if levelChoosen == "*":
-            playerPos, text, blocks, inLevelCoin = openLevel("../../assets/dat/level" + str(levelIndex) + ".dat")
+            playerPos, text, blocks, inLevelCoin = openLevel("assets/dat/level" + str(levelIndex) + ".dat")
         else:
             playerPos, text, blocks, inLevelCoin = openLevel(levelChoosen)
         player = player_s(playerPos[0], playerPos[1], 0, 0) #Put the player to the starting position
@@ -176,7 +176,7 @@ print("Enjoy ! :)")
 
 fs = []
 #Check every file in the folder containing all levels
-for (dirpath, dirnames, filenames) in os.walk("../../assets/dat/"):
+for (dirpath, dirnames, filenames) in os.walk("assets/dat/"):
     fs.extend(filenames)
     break
 nLevels = 0
@@ -204,7 +204,7 @@ if choice == 2:     #But if he choosed option 2
     print()
     w = Tk()
     w.withdraw()    #Hide window
-    levelChoosen = askopenfilename(parent = w, initialdir = "../../assets/dat/",title = "Select a level",filetypes = (("dat files","*.dat"),("all files","*.*")))   #Select a level
+    levelChoosen = askopenfilename(parent = w, initialdir = "assets/dat/",title = "Select a level",filetypes = (("dat files","*.dat"),("all files","*.*")))   #Select a level
     '''THIS PART WAS USED TO SELECT A LEVEL BEFORE USING TKINTER
     #Execute while the user did not enter a valid level number
     while choiceLevel < 1 or choiceLevel > l - 1:
@@ -226,14 +226,14 @@ pygame.display.set_caption("Plateform Game")    #Set window name
 screen = pygame.display.set_mode((xmax, ymax))
 
 #Load all images in pygame images
-backgroundImg = pygame.image.load("../../assets/img/background.png").convert()
-blockImg = pygame.image.load("../../assets/img/block.png").convert()
-waterImg = pygame.image.load("../../assets/img/water.png").convert_alpha()
-coinImg = pygame.image.load("../../assets/img/coin.png").convert_alpha()
-coinBImg = pygame.image.load("../../assets/img/coinB.png").convert_alpha()
-spikesImg = pygame.image.load("../../assets/img/spikes.png").convert_alpha()
-hearthImg = pygame.image.load("../../assets/img/hearth.png").convert_alpha()
-ripImg = pygame.image.load("../../assets/img/rip.png").convert_alpha()
+backgroundImg = pygame.image.load("assets/img/background.png").convert()
+blockImg = pygame.image.load("assets/img/block.png").convert()
+waterImg = pygame.image.load("assets/img/water.png").convert_alpha()
+coinImg = pygame.image.load("assets/img/coin.png").convert_alpha()
+coinBImg = pygame.image.load("assets/img/coinB.png").convert_alpha()
+spikesImg = pygame.image.load("assets/img/spikes.png").convert_alpha()
+hearthImg = pygame.image.load("assets/img/hearth.png").convert_alpha()
+ripImg = pygame.image.load("assets/img/rip.png").convert_alpha()
 #Prepare some text labels for Pygame
 infoFont = pygame.font.SysFont("monospace", 30)
 bigInfoFont = pygame.font.SysFont("monospace", 50)
@@ -255,7 +255,7 @@ playerIndex = 1
 #Print the 8 differents players on 4 rows and 2 columns
 for b in range(0,4):        #rows
     for c in range(0,2):    #columns
-        playerBImg = pygame.image.load("../../assets/img/player" + str(playerIndex) + "B.png").convert_alpha()
+        playerBImg = pygame.image.load("assets/img/player" + str(playerIndex) + "B.png").convert_alpha()
         screen.blit(playerBImg, (100 + b * 215, 250 + c * 265)) #Place the player on the screen
         playerIndex += 1
 pygame.display.flip()
@@ -277,10 +277,10 @@ while playerChoice == "":
                 playerChoice = str(playerIndex)#If it was, save the choice
             playerIndex += 1
 
-playerImg = pygame.image.load("../../assets/img/player" + playerChoice + ".png").convert_alpha()
-playerBImg = pygame.image.load("../../assets/img/player" + playerChoice + "B.png").convert_alpha()
-playerBSImg = pygame.image.load("../../assets/img/player" + playerChoice + "BS.png").convert_alpha()
-playerSImg = pygame.image.load("../../assets/img/player" + playerChoice + "S.png").convert_alpha()
+playerImg = pygame.image.load("assets/img/player" + playerChoice + ".png").convert_alpha()
+playerBImg = pygame.image.load("assets/img/player" + playerChoice + "B.png").convert_alpha()
+playerBSImg = pygame.image.load("assets/img/player" + playerChoice + "BS.png").convert_alpha()
+playerSImg = pygame.image.load("assets/img/player" + playerChoice + "S.png").convert_alpha()
 
 if not(levelChoosen == "*"):    #If the user want to play a specific level and not all of them, the number of levels is 1
     nLevels = 1
@@ -298,7 +298,7 @@ for levelIndex in range(1,nLevels + 1):
     #If the player want to play all levels, open next level in the "levels
     #list" and prepare the level title and finished messages/labels
     if levelChoosen == "*":
-        playerPos, text, blocks, inLevelCoin = openLevel("../../assets/dat/level" + str(levelIndex) + ".dat")
+        playerPos, text, blocks, inLevelCoin = openLevel("assets/dat/level" + str(levelIndex) + ".dat")
         levelLabel = bigInfoFont.render("LEVEL " + str(levelIndex), 1, (0,0,139))
         ggLabel = infoFont.render("Level " + str(levelIndex) + " completed !", 1, (0,0,139))
     else:

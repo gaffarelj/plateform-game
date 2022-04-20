@@ -19,11 +19,11 @@ os.environ['SDL_VIDEO_CENTERED'] = '1'  #Center the Pygame window
 pygame.init()
 screen = pygame.display.set_mode((xmax, ymax))
 #Load all images and prepare labels
-playerImg = pygame.image.load("../../assets/img/player1.png").convert_alpha()
-backgroundImg = pygame.image.load("../../assets/img/background.png").convert()
-blockImg = pygame.image.load("../../assets/img/block.png").convert()
-coinImg = pygame.image.load("../../assets/img/coin.png").convert_alpha()
-spikesImg = pygame.image.load("../../assets/img/spikes.png").convert_alpha()
+playerImg = pygame.image.load("assets/img/player1.png").convert_alpha()
+backgroundImg = pygame.image.load("assets/img/background.png").convert()
+blockImg = pygame.image.load("assets/img/block.png").convert()
+coinImg = pygame.image.load("assets/img/coin.png").convert_alpha()
+spikesImg = pygame.image.load("assets/img/spikes.png").convert_alpha()
 infoFont = pygame.font.SysFont("monospace", 22)
 infoFont.set_bold(1)
 
@@ -140,7 +140,7 @@ for spike in spikes:
 
 #Get all filenames in the folder containing all levels
 fs = []
-for (dirpath, dirnames, filenames) in os.walk("../../assets/dat/"):
+for (dirpath, dirnames, filenames) in os.walk("assets/dat/"):
     fs.extend(filenames)
     break
 maxLevel = 0
@@ -162,21 +162,21 @@ while not(choice == 1 or choice == 2):
         print("Incorrect value.")
 
 if choice == 1: #If the user's choice was "1", save the file as the next level
-    f = open("../../assets/dat/level" + str(maxLevel + 1) + ".dat","w")
+    f = open("assets/dat/level" + str(maxLevel + 1) + ".dat","w")
     f.writelines(file)
     f.close()
 elif choice == 2:   #If the user's choice was "2"...
     fileExist = True
     while fileExist:    #Keep asking for a file name while the specified one already exist
         filenameT = str(input("Enter a filename : "))
-        if os.path.isfile("../../assets/dat/" + filenameT + ".dat"):
+        if os.path.isfile("assets/dat/" + filenameT + ".dat"):
             print("That file already exists !")
         else:
             fileExist = False
-    f = open("../../assets/dat/" + filenameT + ".dat","w")  #Then save the file
+    f = open("assets/dat/" + filenameT + ".dat","w")  #Then save the file
     f.writelines(file)
     f.close()
 
 print("\nFile saved.")
 input("Press ENTER to play the game, otherwise close the console")
-os.system("..\..\play\play\play.py")    #Open "play.py" to play the game
+os.system("play.py")    #Open "play.py" to play the game
